@@ -1,0 +1,130 @@
+import { useEffect, useState } from 'react';
+
+const Hero = () => {
+  const [text, setText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(150);
+
+  const roles = ["Full Stack Web Developer", "Problem Solver", "Software Engineer", "Continuous Learner"];
+
+  useEffect(() => {
+    let ticker = setInterval(() => {
+      tick();
+    }, typingSpeed);
+
+    return () => clearInterval(ticker);
+  }, [text, isDeleting, loopNum]);
+
+  const tick = () => {
+    let i = loopNum % roles.length;
+    let fullText = roles[i];
+    let updatedText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
+
+    setText(updatedText);
+
+    if (isDeleting) {
+      setTypingSpeed(prevSpeed => prevSpeed / 2);
+    }
+
+    if (!isDeleting && updatedText === fullText) {
+      setIsDeleting(true);
+      setTypingSpeed(2000); // Pause at the end
+    } else if (isDeleting && updatedText === '') {
+      setIsDeleting(false);
+      setLoopNum(loopNum + 1);
+      setTypingSpeed(150); // Reset speed
+    }
+  };
+
+  return (
+    <section id="hero" className="min-h-screen flex items-center justify-center pt-20 pb-12 overflow-hidden relative">
+      {/* Abstract Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-dark-accent/20 dark:bg-dark-accent/10 rounded-full blur-3xl opacity-50 animate-pulse"></div>
+        <div className="absolute top-40 -left-40 w-72 h-72 bg-purple-500/20 dark:bg-purple-600/10 rounded-full blur-3xl opacity-50 animate-pulse delay-1000"></div>
+      </div>
+
+      <div className="container mx-auto px-6 content-center text-center sm:text-left">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          
+          <div className="order-2 lg:order-1 flex flex-col justify-center space-y-6">
+            <h2 className="text-xl md:text-2xl font-medium text-light-accent dark:text-dark-accent tracking-widest uppercase">
+              Hello, World! I am
+            </h2>
+            <h1 className="text-5xl md:text-7xl font-extrabold text-light-text dark:text-dark-text tracking-tight">
+              Manav Singla
+            </h1>
+            <h3 className="text-2xl md:text-4xl font-semibold text-slate-600 dark:text-slate-400 h-10">
+              I'm a <span className="text-light-accent dark:text-dark-accent border-r-4 border-dark-accent pr-1 animate-pulse">{text}</span>
+            </h3>
+            
+            <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-lg mt-4 leading-relaxed">
+              An enthusiastic and dedicated Computer Science student aiming to build scalable applications and solve complex real-world problems.
+            </p>
+            
+            <div className="flex flex-wrap gap-4 pt-4 justify-center sm:justify-start">
+              <a 
+                href="#projects" 
+                className="px-8 py-3 bg-light-accent dark:bg-dark-accent text-white font-medium rounded-full shadow-lg shadow-light-accent/30 dark:shadow-dark-accent/20 hover:scale-105 hover:shadow-xl transition-all duration-300"
+              >
+                View Projects
+              </a>
+              <a 
+                href="/ManavSingla_CV.pdf" 
+                download
+                className="px-8 py-3 glass flex items-center text-light-text dark:text-dark-text font-medium rounded-full hover:bg-slate-100 dark:hover:bg-white/5 hover:scale-105 transition-all duration-300 outline-none focus:ring-2 focus:ring-light-accent dark:focus:ring-dark-accent"
+              >
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                Download CV
+              </a>
+              <a 
+                href="#contact" 
+                className="px-8 py-3 glass text-light-text dark:text-dark-text font-medium rounded-full hover:bg-slate-100 dark:hover:bg-white/5 hover:scale-105 transition-all duration-300"
+              >
+                Contact Me
+              </a>
+            </div>
+            
+            {/* Social Links Mini */}
+            <div className="flex space-x-5 pt-8 justify-center sm:justify-start">
+              <a href="https://github.com/ManavSinghla" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-light-accent dark:hover:text-dark-accent transition-colors">
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" /></svg>
+              </a>
+              <a href="https://linkedin.com/in/manav-singhla/" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-light-accent dark:hover:text-dark-accent transition-colors">
+                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </a>
+            </div>
+            
+          </div>
+          
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+            <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
+              {/* Decorative rings */}
+              <div className="absolute inset-0 rounded-full border-2 border-dashed border-light-accent/30 dark:border-dark-accent/30 animate-[spin_10s_linear_infinite]"></div>
+              <div className="absolute inset-4 rounded-full border border-purple-500/20 dark:border-purple-600/20 animate-[spin_15s_linear_infinite_reverse]"></div>
+              
+              {/* Avatar placeholder / Container */}
+              <div className="absolute inset-8 rounded-full bg-gradient-to-tr from-light-accent to-purple-500 dark:from-dark-accent dark:to-purple-800 p-1 overflow-hidden shadow-2xl">
+                 <div className="w-full h-full rounded-full bg-white dark:bg-dark-bg flex items-center justify-center overflow-hidden">
+                    <span className="text-6xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-tr from-light-accent to-purple-500 dark:from-dark-accent dark:to-purple-500 opacity-50">
+                      MS
+                    </span>
+                 </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      {/* Scroll indicator */}
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
+        <span className="text-sm text-slate-500 dark:text-slate-400 mb-2">Scroll Down</span>
+        <svg className="w-5 h-5 text-slate-500 dark:text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
