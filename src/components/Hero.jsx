@@ -60,7 +60,7 @@ const Hero = () => {
         <div className="absolute bottom-20 right-1/4 w-64 h-64 bg-indigo-400/15 dark:bg-indigo-500/10 rounded-full blur-3xl opacity-40 animate-pulse delay-500"></div>
       </div>
 
-      <div className="container mx-auto px-6 content-center text-center sm:text-left">
+      <div className="container mx-auto px-4 sm:px-6 content-center text-center sm:text-left">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           
           <motion.div 
@@ -77,38 +77,38 @@ const Hero = () => {
               </span>
             </motion.div>
 
-            <motion.h2 variants={itemVariants} className="text-xl md:text-2xl font-medium text-light-accent dark:text-dark-accent tracking-widest uppercase">
+            <motion.h2 variants={itemVariants} className="text-lg sm:text-xl md:text-2xl font-medium text-light-accent dark:text-dark-accent tracking-widest uppercase">
               Hello, World! I am
             </motion.h2>
-            <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-extrabold text-light-text dark:text-dark-text tracking-tight">
+            <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-light-text dark:text-dark-text tracking-tight">
               Manav Singla
             </motion.h1>
-            <motion.h3 variants={itemVariants} className="text-2xl md:text-4xl font-semibold text-slate-600 dark:text-slate-400 h-10">
+            <motion.h3 variants={itemVariants} className="text-xl sm:text-2xl md:text-4xl font-semibold text-slate-600 dark:text-slate-400 min-h-[2.5rem] sm:min-h-[3rem]">
               I'm a <span className="text-light-accent dark:text-dark-accent border-r-4 border-dark-accent pr-1 animate-pulse">{text}</span>
             </motion.h3>
             
-            <motion.p variants={itemVariants} className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-lg mt-4 leading-relaxed">
+            <motion.p variants={itemVariants} className="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-lg mt-4 leading-relaxed">
               I build production-ready web applications that solve real problems and deliver measurable results. Specialized in the MERN stack with strong DSA foundations.
             </motion.p>
             
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-4 pt-4 justify-center sm:justify-start">
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-4 justify-center sm:justify-start">
               <a 
                 href="#projects" 
-                className="px-8 py-3 bg-light-accent dark:bg-dark-accent text-white font-medium rounded-full shadow-lg shadow-light-accent/30 dark:shadow-dark-accent/20 hover:scale-105 hover:shadow-xl transition-all duration-300"
+                className="px-8 py-3 bg-light-accent dark:bg-dark-accent text-white font-medium rounded-full shadow-lg shadow-light-accent/30 dark:shadow-dark-accent/20 hover:scale-105 hover:shadow-xl transition-all duration-300 text-center"
               >
                 View Projects
               </a>
               <a 
                 href="/ManavSingla_CV.pdf" 
                 download
-                className="px-8 py-3 glass flex items-center text-light-text dark:text-dark-text font-medium rounded-full hover:bg-slate-100 dark:hover:bg-white/5 hover:scale-105 transition-all duration-300 outline-none focus:ring-2 focus:ring-light-accent dark:focus:ring-dark-accent"
+                className="px-8 py-3 glass flex items-center justify-center text-light-text dark:text-dark-text font-medium rounded-full hover:bg-slate-100 dark:hover:bg-white/5 hover:scale-105 transition-all duration-300 outline-none focus:ring-2 focus:ring-light-accent dark:focus:ring-dark-accent"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
                 Download CV
               </a>
               <a 
                 href="#contact" 
-                className="px-8 py-3 glass text-light-text dark:text-dark-text font-medium rounded-full hover:bg-slate-100 dark:hover:bg-white/5 hover:scale-105 transition-all duration-300"
+                className="px-8 py-3 glass text-light-text dark:text-dark-text font-medium rounded-full hover:bg-slate-100 dark:hover:bg-white/5 hover:scale-105 transition-all duration-300 text-center"
               >
                 Contact Me
               </a>

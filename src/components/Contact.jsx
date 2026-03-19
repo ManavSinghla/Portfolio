@@ -59,17 +59,17 @@ const Contact = () => {
 
         {/* CTA Buttons */}
         <AnimatedSection delay={0.1}>
-          <div className="flex flex-wrap justify-center gap-4 mb-14">
+          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 mb-14">
             <a 
               href="mailto:manavsinghla123@gmail.com"
-              className="px-10 py-4 bg-white text-light-accent dark:bg-dark-accent dark:text-white font-bold rounded-full hover:scale-105 shadow-xl transition-all duration-300 hover:shadow-2xl"
+              className="px-10 py-4 bg-white text-light-accent dark:bg-dark-accent dark:text-white font-bold rounded-full hover:scale-105 shadow-xl transition-all duration-300 hover:shadow-2xl text-center"
             >
               Say Hello 👋
             </a>
             <a 
               href="/ManavSingla_CV.pdf" 
               download
-              className="px-10 py-4 bg-transparent border-2 border-white dark:border-dark-accent text-white dark:text-dark-accent font-bold rounded-full hover:scale-105 hover:bg-white/10 dark:hover:bg-dark-accent/10 transition-all duration-300 inline-flex items-center"
+              className="px-10 py-4 bg-transparent border-2 border-white dark:border-dark-accent text-white dark:text-dark-accent font-bold rounded-full hover:scale-105 hover:bg-white/10 dark:hover:bg-dark-accent/10 transition-all duration-300 inline-flex items-center justify-center"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
               Download Resume
